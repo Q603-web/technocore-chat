@@ -170,6 +170,8 @@ def test_the_cli_refuses_before_the_temporary_store_exists() -> None:
         result, stderr = cli("--rooms", "4", "--deep", "2", "--depth", depth)
         assert result == {"code": 2, "reached": []}, stderr
         assert f"--depth {depth}" in stderr
+        assert "--deep 2" in stderr
+        assert "--depth must be >= 1 when --deep > 0" in stderr
 
 
 def test_the_cli_reaches_setup_for_a_valid_pair() -> None:

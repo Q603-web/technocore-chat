@@ -186,8 +186,8 @@ def main() -> int:
     # and exit 2 before any tempdir exists, rather than a ValueError traceback out of setup.
     if args.deep > 0 and args.depth < 1:
         p.error(
-            f"--depth {args.depth} with --deep {args.deep} builds no deep rooms: a room exists "
-            f"only once it holds a record, so the run would not measure the store it reports"
+            f"--depth {args.depth} with --deep {args.deep} builds no deep rooms: "
+            "--depth must be >= 1 when --deep > 0"
         )
 
     with tempfile.TemporaryDirectory(prefix="bench-rooms-") as tmp:
